@@ -1,5 +1,5 @@
 PICORUBY_DIR  ?= ../picoruby
-CONFIG_NAME    = hardenedbsd-test-harness
+CONFIG_NAME    = htest
 ROOT          != pwd
 BUILD_CONFIG   = $(ROOT)/build_config/$(CONFIG_NAME).rb
 BUILD_NAME    != sed -n 's/^MRuby::Build.new("\([^"]*\)").*/\1/p' $(BUILD_CONFIG)
