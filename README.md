@@ -51,7 +51,7 @@ writing tests.
 
 ##### Write a test
 
-> picoruby test_fork.rb
+> htest test_fork.rb
 
 ```ruby
 class Test < Picotest::Test
