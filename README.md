@@ -26,11 +26,11 @@ the `_test.rb` suffix.
 
 ##### ruby
 
-The picoruby build process requires
-the ruby34 package to be installed
-in order to bootstrap itself.
+PicoRuby requires ruby to be installed
+so it can bootstrap itself: 
 
-    pkg install ruby34
+    pkg install rubygem-rake
+    pkg install ruby
 
 ##### make
 
