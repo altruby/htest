@@ -9,16 +9,13 @@
 
 ## About
 
-This project is built with
-[picoruby](https://picoruby.org/)
-and it exists to provide a 
-binary that links against
-picoruby's test framework
-and other libraries that can
-be used to test hardenedBSD
-features. The binary is 
-dynamically linked but 
-otherwise standalone.
+
+The htest project provides a binary
+that is linked against [picoruby](https://picoruby.org),
+its test unit library, [picoruby-jail](https://github.com/altruby/picoruby-jail),
+and other libraries that are useful
+when testing [hardenedBSD](https://hardenedbsd.org)
+features.
 
 ## Install
 
