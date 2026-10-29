@@ -44,10 +44,16 @@ main(int argc, char **argv)
     mrb_close(mrb);
     return EXIT_FAILURE;
   }
+
   proc = mrb_proc_new(mrb, irep);
   proc->c = NULL;
-  task = mrb_create_task(mrb, proc, mrb_str_new_lit(mrb, "main"),
-                         mrb_nil_value(), mrb_obj_value(mrb->top_self));
+  task = mrb_create_task(
+    mrb,
+    proc,
+    mrb_str_new_lit(mrb, "main"),
+    mrb_nil_value(),
+    mrb_obj_value(mrb->top_self)
+  );
   mrb_task_run(mrb);
 
   mrb_value result = mrb_task_value(mrb, task);
