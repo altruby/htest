@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center">
-  <strong>picoruby-jail</strong>
+  <strong>hardenedbsd-test-harness</strong>
 </p>
 
 ## About
@@ -39,3 +39,17 @@ writing tests.
     $ make build
     $ ../picoruby/build/hardenedbsd-test-harness/bin/picoruby -e 'puts "hello world"'
 
+## Quick start
+
+##### Write a test
+
+> picoruby test_fork.rb
+
+```ruby
+class Test < Picotest::Test
+  def test_fork
+    Process.wait Process.fork { exit 0 }
+    assert_equal true, $?.success?
+  end
+end
+```
