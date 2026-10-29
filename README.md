@@ -61,7 +61,7 @@ writing tests.
 class Test < Picotest::Test
   def test_fork
     Process.wait Process.fork { exit 0 }
-    assert_equal true, $?.success?
+    assert_equal 0, $?.exitstatus
   end
 end
 ```
