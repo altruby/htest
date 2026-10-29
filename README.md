@@ -30,9 +30,10 @@ be installed or it won't build.
 
 ##### ruby
 
-PicoRuby requires ruby to be installed
+PicoRuby requires (ruby|gcc|rake) to be installed
 so it can bootstrap itself: 
 
+    pkg install gcc
     pkg install rubygem-rake
     pkg install ruby
 
