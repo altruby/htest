@@ -47,13 +47,15 @@ writing tests.
     $ git clone https://github.com/altruby/htest
     $ cd htest
     $ make build
-    $ ./tmp/htest test_fork.rb
+    $ touch fork_test.rb
+    $ ./tmp/htest
 
 ## Quick start
 
 ##### Write a test
 
-> htest test_fork.rb
+> touch fork_test.rb
+> htest
 
 ```ruby
 class Test < Picotest::Test
