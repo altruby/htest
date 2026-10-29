@@ -9,7 +9,6 @@
 
 ## About
 
-
 The htest project provides a binary
 that is linked against [picoruby](https://picoruby.org),
 its test unit library, [picoruby-jail](https://github.com/altruby/picoruby-jail),
@@ -23,6 +22,11 @@ the current working directory that have
 the `_test.rb` suffix. 
 
 ## Install
+
+##### Requirements
+
+Requires the hardened/15-stable/pledge branch to
+be installed or it won't build.
 
 ##### ruby
 
@@ -51,6 +55,44 @@ writing tests.
     $ ./tmp/htest
 
 ## Quick start
+
+##### What's available?
+
+The htest program is linked against
+a number of different libraries that
+are always available to your tests.
+Those include (but not limited to):
+
+* picoruby-picotest
+* [picoruby-jail](https://github.com/altruby/picoruby-jail)
+* [picoruby-pledge](https://github.com/altruby/picoruby-pledge)
+
+For example:
+
+```ruby
+
+class Test < Picotest::Test
+  def setup
+    @jail = Jail.create(
+      name: "test",
+      path: "/tmp/base",
+      persist: true
+    )
+  end
+
+  def teardown
+    @jail.remove
+  end
+
+  def test_jail_attach
+    Process.fork do
+      @jail.attach
+      exit 1
+    end
+    assert_equal 1, $?.exitstatus
+  end
+end
+```
 
 ##### Write a test
 
