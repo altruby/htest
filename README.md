@@ -33,7 +33,8 @@ be installed or it won't build.
 PicoRuby requires (ruby|gcc|rake) to be installed
 so it can bootstrap itself: 
 
-    for package in gcc rubygem ruby; do
+    packages="ruby rubygem-rake gcc"
+    for package in ${packages}; do
       pkg install ${package}
     done
 
