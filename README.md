@@ -15,7 +15,12 @@ that is linked against [picoruby](https://picoruby.org),
 its test unit library, [picoruby-jail](https://github.com/altruby/picoruby-jail),
 and other libraries that are useful
 when testing [hardenedBSD](https://hardenedbsd.org)
-features.
+features. The htest program can be included
+in a [Kyuafile(5)](https://man.freebsd.org/kyuafile)
+that can be executed by `kyua test`. The
+program will run all test files found in
+the current working directory that have 
+the `_test.rb` suffix. 
 
 ## Install
 
