@@ -17,7 +17,7 @@ DEFINES        = -DPICORB_PLATFORM_POSIX -DMRB_TICK_UNIT=4 -DMRB_TIMESLICE_TICK_
                  -DMRB_USE_TASK_SCHEDULER -DMRB_BASELINE_PROFILE=1 \
                  -DHAVE_MRUBY_IO_GEM -DNDEBUG=1
 CFLAGS         = -std=gnu99 -g $(DEFINES) -I$(MRUBY_INCLUDE) -I$(TASK_INCLUDE) -I$(BUILD_DIR)/include -pthread
-LIBS           = $(BUILD_DIR)/lib/libmruby.a -pthread -ljail -lm
+LIBS           = $(BUILD_DIR)/lib/libmruby.a -pthread -ljail -lpledge -lm
 
 .PHONY: all build test clean distclean
 
