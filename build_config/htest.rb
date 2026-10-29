@@ -20,7 +20,8 @@ MRuby::Build.new("htest") do |conf|
   conf.cc.flags << "-pthread"
   conf.linker.flags << "-pthread"
   conf.linker.libraries << 'jail'
-
+  conf.linker.libraries << 'pledge'
+  
   conf.gembox "mruby-posix"
   conf.gembox "minimum"
   conf.gembox "core"
@@ -35,4 +36,3 @@ MRuby::Build.new("htest") do |conf|
   conf.gem github: "altruby/mruby-hardened-pledge",
                     branch: "master"
 end
-

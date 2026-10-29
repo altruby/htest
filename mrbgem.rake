@@ -15,4 +15,5 @@ MRuby::Gem::Specification.new("htest") do |spec|
   spec.cc.flags << '-Wall'
   spec.cc.flags << '-Wpedantic'
   spec.linker.libraries << 'jail'
+  spec.linker.libraries << 'pledge'
 end
