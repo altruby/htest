@@ -22,6 +22,14 @@ otherwise standalone.
 
 ## Install
 
+##### ruby
+
+The picoruby build process requires
+the ruby34 package to be installed
+in order to bootstrap itself.
+
+    pkg install ruby34
+
 ##### make
 
 A copy of the 
