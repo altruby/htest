@@ -45,7 +45,7 @@ writing tests.
     $ git clone https://github.com/altruby/htest
     $ cd htest
     $ make build
-    $ ../picoruby/build/htest/bin/picoruby -e 'puts "hello world"'
+    $ ./tmp/htest test_fork.rb
 
 ## Quick start
 
