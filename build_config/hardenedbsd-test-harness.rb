@@ -28,4 +28,8 @@ MRuby::Build.new("hardenedbsd-test-harness") do |conf|
 
   conf.gem core: "picoruby-picotest"
   conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-bin-mirb")
+  conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-process")
+  conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-signal")
+  conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-struct")
 end
+
