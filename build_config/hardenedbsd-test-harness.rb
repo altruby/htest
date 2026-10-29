@@ -1,4 +1,4 @@
-MRuby::Build.new("hardenedbsd-test-harness") do |conf|
+MRuby::Build.new("htest") do |conf|
   ##
   # Paths
   root  = File.realpath File.join(__dir__, "..")

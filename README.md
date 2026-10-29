@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center">
-  <strong>hardenedbsd-test-harness</strong>
+  <strong>htest</strong>
 </p>
 
 ## About
@@ -42,10 +42,10 @@ other libraries that are useful when
 writing tests.
 
     $ git clone --recurse-submodules https://github.com/picoruby/picoruby picoruby
-    $ git clone https://github.com/altruby/hardenedbsd-test-harness
-    $ cd hardenedbsd-test-harness
+    $ git clone https://github.com/altruby/htest
+    $ cd htest
     $ make build
-    $ ../picoruby/build/hardenedbsd-test-harness/bin/picoruby -e 'puts "hello world"'
+    $ ../picoruby/build/htest/bin/picoruby -e 'puts "hello world"'
 
 ## Quick start
 
