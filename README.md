@@ -85,10 +85,11 @@ class Test < Picotest::Test
   end
 
   def test_jail_attach
-    Process.fork do
+    pid = Process.fork do
       @jail.attach
       exit 1
     end
+    Process.wait(pid)
     assert_equal 1, $?.exitstatus
   end
 end
