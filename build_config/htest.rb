@@ -31,5 +31,6 @@ MRuby::Build.new("htest") do |conf|
   conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-process")
   conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-signal")
   conf.gem gemdir: File.join(mruby, "mrbgems", "mruby-struct")
+  conf.gem gemdir: root
 end
 
