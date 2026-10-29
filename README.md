@@ -54,7 +54,7 @@ writing tests.
 
 ##### Write a test
 
-> touch fork_test.rb
+> touch fork_test.rb  
 > htest
 
 ```ruby
