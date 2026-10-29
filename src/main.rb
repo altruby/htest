@@ -1,4 +1,3 @@
-ENV["RUBY"] ||= "ruby34"
 tests = []
 
 def warn(m)
@@ -24,10 +23,18 @@ end
 Dir.foreach(Dir.getwd) do |file|
   next if File.directory?(file)
   next if not file.end_with?("_test.rb")
-  tests << File.join(Dir.getwd, file)
+  load File.join(Dir.getwd, file)
 end
 
-Picotest::Runner.new(
-  Dir.getwd,
-  entries: tests
-).run
+ObjectSpace.each_object(Class) do |klass|
+  next unless klass.superclass == Picotest::Test
+  t = klass.new
+  t.list_tests.each do |m|
+    tt = klass.new
+    tt.setup
+    tt.send(m)
+  ensure
+    tt.teardown
+  end
+end
+
