@@ -1,27 +1,42 @@
 PICORUBY_DIR  ?= ../picoruby
-BUILD_NAME     = hardenedbsd-test-harness
+CONFIG_NAME    = hardenedbsd-test-harness
 ROOT          != pwd
-BUILD_CONFIG   = $(ROOT)/build_config/$(BUILD_NAME).rb
+BUILD_CONFIG   = $(ROOT)/build_config/$(CONFIG_NAME).rb
+BUILD_NAME    != sed -n 's/^MRuby::Build.new("\([^"]*\)").*/\1/p' $(BUILD_CONFIG)
 BUILD_DIR      = $(PICORUBY_DIR)/build/$(BUILD_NAME)
 SOURCES       != find mrblib src test -type f 2>/dev/null | sort
 BUILD_STAMP    = tmp/build.stamp
+
+MRBC           = $(BUILD_DIR)/bin/mrbc
+MRUBY_INCLUDE  = $(PICORUBY_DIR)/mrbgems/picoruby-mruby/lib/mruby/include
+MAIN_IREP      = tmp/main.c
+BIN            = tmp/$(BUILD_NAME)
+CFLAGS         = -I$(MRUBY_INCLUDE) -I$(BUILD_DIR)/include -pthread
+LIBS           = $(BUILD_DIR)/lib/libmruby.a -pthread -ljail -lm
 
 .PHONY: all build test clean distclean
 
 all: test
 
-build: $(BUILD_STAMP)
+build: $(BIN)
 
 $(BUILD_STAMP): $(BUILD_CONFIG) $(SOURCES)
 	mkdir -p tmp
 	cd $(PICORUBY_DIR) && MRUBY_CONFIG=$(BUILD_CONFIG) rake all
 	touch $(BUILD_STAMP)
 
+$(MAIN_IREP): src/main.rb $(BUILD_STAMP)
+	mkdir -p tmp
+	$(MRBC) -Bhtest_main -o $@ src/main.rb
+
+$(BIN): main.c $(MAIN_IREP)
+	$(CC) $(CFLAGS) -o $@ main.c $(MAIN_IREP) $(LIBS)
+
 test: build
-	ruby tool/picotest.rb
+	$(BIN)
 
 clean:
-	rm -f $(BUILD_STAMP)
+	rm -f $(BUILD_STAMP) $(MAIN_IREP) $(BIN)
 	cd $(PICORUBY_DIR) && MRUBY_CONFIG=$(BUILD_CONFIG) rake clean
 
 distclean: clean
