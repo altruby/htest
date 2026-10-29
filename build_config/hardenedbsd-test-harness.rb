@@ -1,4 +1,4 @@
-MRuby::Build.new('picoruby-jail') do |conf|
+MRuby::Build.new("hardenedbsd-test-harness") do |conf|
   ##
   # Paths
   root  = File.realpath File.join(__dir__, "..")
