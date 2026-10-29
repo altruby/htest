@@ -9,18 +9,19 @@ BUILD_STAMP    = tmp/build.stamp
 
 MRBC           = $(BUILD_DIR)/bin/mrbc
 MRUBY_INCLUDE  = $(PICORUBY_DIR)/mrbgems/picoruby-mruby/lib/mruby/include
+TASK_INCLUDE   = $(PICORUBY_DIR)/mrbgems/picoruby-mruby/lib/mruby/mrbgems/mruby-task/include
 MAIN_IREP      = tmp/main.c
 BIN            = tmp/$(BUILD_NAME)
 DEFINES        = -DPICORB_PLATFORM_POSIX -DMRB_TICK_UNIT=4 -DMRB_TIMESLICE_TICK_COUNT=3 \
                  -DMRB_INT64 -DMRB_NO_BOXING -DMRB_UTF8_STRING -DPICORB_VM_MRUBY \
                  -DMRB_USE_TASK_SCHEDULER -DMRB_BASELINE_PROFILE=1 \
                  -DHAVE_MRUBY_IO_GEM -DNDEBUG=1
-CFLAGS         = -std=gnu99 -g $(DEFINES) -I$(MRUBY_INCLUDE) -I$(BUILD_DIR)/include -pthread
+CFLAGS         = -std=gnu99 -g $(DEFINES) -I$(MRUBY_INCLUDE) -I$(TASK_INCLUDE) -I$(BUILD_DIR)/include -pthread
 LIBS           = $(BUILD_DIR)/lib/libmruby.a -pthread -ljail -lm
 
 .PHONY: all build test clean distclean
 
-all: test
+all: build
 
 build: $(BIN)
 
