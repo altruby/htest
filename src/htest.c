@@ -20,8 +20,8 @@ static mrbfork(mrb_state *mrb, mrb_value self)
     /* child */
     if(mrb_block_given_p(mrb)) {
       mrb_yield(mrb, b, mrb_nil_value());
+      exit(EXIT_SUCCESS);
     }
-    exit(EXIT_SUCCESS);
   } else {
     /* parent */
     return mrb_int64_value(mrb, (int64_t)pid);
