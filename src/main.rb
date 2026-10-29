@@ -27,4 +27,7 @@ Dir.foreach(Dir.getwd) do |file|
   tests << File.join(Dir.getwd, file)
 end
 
-Picotest::Runner.new(Dir.getwd, entries: tests).run
+Picotest::Runner.new(
+  Dir.getwd,
+  entries: tests
+).run
