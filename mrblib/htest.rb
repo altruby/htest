@@ -17,9 +17,15 @@ class Htest < Picotest::Test
   end
 
   ##
+  # @param [Jail] jail
+  # @return [void]
+  def setup_jail(jail)
+    raise NotImplementedError
+  end
+
+  ##
   # @return [Hash]
   def jail_settings
     raise NotImplementedError
   end
 end
-
