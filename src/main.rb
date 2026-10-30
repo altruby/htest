@@ -20,10 +20,10 @@ while option = ARGV.shift
   end
 end
 
-Dir.foreach(Dir.getwd) do |file|
+Dir.foreach(ENV["PWD"]) do |file|
   next if File.directory?(file)
   next if not file.end_with?("_test.rb")
-  load File.join(Dir.getwd, file)
+  load File.join(ENV["PWD"], file)
 end
 
 ObjectSpace.each_object(Class) do |klass|
@@ -37,4 +37,3 @@ ObjectSpace.each_object(Class) do |klass|
     tt.teardown
   end
 end
-
