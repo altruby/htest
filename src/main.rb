@@ -27,7 +27,7 @@ Dir.foreach(ENV["PWD"]) do |file|
 end
 
 ObjectSpace.each_object(Class) do |klass|
-  next unless [Picotest::Test, Htest].any? { it == klass.superclass }
+  next unless klass.ancestors.include?(Picotest::Test)
   t = klass.new
   t.list_tests.each do |m|
     tt = klass.new

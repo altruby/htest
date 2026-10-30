@@ -13,7 +13,7 @@ class Htest < Picotest::Test
   # Isolate our tests in a separate jail.
   # @return [Jail]
   def jail
-    @jail ||= Jail.create(**jail_settingssettings)
+    @jail ||= Jail.create(**jail_settings)
   end
 
   ##
