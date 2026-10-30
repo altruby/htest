@@ -11,7 +11,10 @@ MRuby::Gem::Specification.new("htest") do |spec|
                         branch: "master",
                         path: "mrbgems/mruby-errno"
   end
-
+  spec.rbfiles = [
+    "mrblib/htest.rb",
+    "mrblib/htest/utils.rb"
+  ].map { File.join(__dir__, _1) }
   spec.cc.flags << '-Wall'
   spec.cc.flags << '-Wpedantic'
   spec.linker.libraries << 'jail'
