@@ -23,7 +23,7 @@ class Htest
 
     ##
     # @return (see Test::Utils#open_file)
-    def write_file(promises:)
+    def write_file(path:, promises:)
       open_file(path:, promises:, mode: "w")
     end
   end
