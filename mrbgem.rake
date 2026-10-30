@@ -5,7 +5,7 @@ MRuby::Gem::Specification.new("htest") do |spec|
   spec.version =  "0.1.0"
 
   if build.picoruby?
-    spec.require_name = "jail"
+    spec.require_name = "htest"
     spec.add_dependency "mruby-errno",
                         github: "mruby/mruby",
                         branch: "master",
